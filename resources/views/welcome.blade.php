@@ -830,6 +830,13 @@
     <header>
         <h1>Test</h1>
     </header>
+    <main>
+        @foreach ($products as $product)
+        <h2>{{ $product->name }}</h2>
+        <p>{{ $product->price }}</p>
+        <p>{{ $product->description }}</p>
+        @endforeach
+    </main>
 </body>
 
 </html>

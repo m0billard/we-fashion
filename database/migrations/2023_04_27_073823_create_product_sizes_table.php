@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_sizes', function (Blueprint $table) {
-            $table->id();
-            $table->set('sizes', ['XS', 'S', 'M', 'L', 'XL']);
+            $table->increments('id');
+            $table->enum('sizes', ['XS', 'S', 'M', 'L', 'XL']);
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
