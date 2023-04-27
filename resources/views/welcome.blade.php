@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @vite('resources/css/app.css')
 
-    <title>ACCUEIL</title>
+    <title>Accueil</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -826,17 +827,63 @@
     </style>
 </head>
 
-<body>
-    <header>
-        <h1>Test</h1>
+<body id="top">
+    <header class="bg-white z-50 fixed top-0 w-full shadow">
+        <nav id="main-nav" class="bg-white max-w-5xl mx-auto font-poppins p-6 flex items-center justify-between">
+            <a href="top" class="flex" aria-label="Page d'accueil du portfolio">
+                <span aria-hidden="true" class="text-lg lg:text-xl text-[#66EB9A]">
+                    WE FASHION
+                </span>
+            </a>
+            <button aria-label="toggle button" aria-expanded="false" id="menu-btn"
+                class="cursor-pointer w-7 md:hidden">
+                <img src="{{ asset('img/menu.svg') }}" alt="">
+            </button>
+            <ul id="toggled-menu"
+                class="w-full absolute top-full left-0 -translate-y-full -z-10 text-gray-800 border-b border-gray-200 flex flex-col items-center md:static md:z-10 md:w-min md:transform-none md:border-none md:flex-row">
+                <li class="py-4 md:py-0 md:mr-6">
+                    <a href="#cv" class="text-sm uppercase font-semibold w-full hover:text-[#66EB9A]">SOLDES
+                    </a>
+                </li>
+                <li class="py-4 md:py-0 md:mr-6">
+                    <a href="#competences" class="text-sm uppercase font-semibold w-full hover:text-[#66EB9A]">HOMME
+                    </a>
+                </li>
+                <li class="py-4 md:py-0 md:mr-6">
+                    <a href="#projets" class="text-sm uppercase font-semibold w-full hover:text-[#66EB9A]">FEMME
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <main>
         @foreach ($products as $product)
-        <h2>{{ $product->name }}</h2>
-        <p>{{ $product->price }}</p>
-        <p>{{ $product->description }}</p>
+            <h2>{{ $product->name }}</h2>
+            <p>{{ $product->price }}</p>
+            <p>{{ $product->description }}</p>
         @endforeach
     </main>
+
+    <script>
+        const toggleMenuBtn = document.querySelector("#menu-btn");
+        const toggleMenuImg = document.querySelector("#menu-btn img");
+        const toggledMenu = document.querySelector("#toggled-menu");
+        const menuLinks = document.querySelector("#main-nav ul a");
+
+        toggleMenuBtn.addEventListener("click", toggleNav);
+
+        function toggleNav() {
+            toggledMenu.classList.toggle("-translate-y-full")
+
+            if (toggledMenu.classList.contains("-translate-y-full")) {
+                toggleMenuImg.setAttribute("src", "img/menu.svg")
+                toggleMenuBtn.setAttribute("aria-expanded", "false")
+            } else {
+                toggleMenuImg.setAttribute("src", "img/cross.svg")
+                toggleMenuBtn.setAttribute("aria-expanded", "true")
+            }
+        }
+    </script>
 </body>
 
 </html>
