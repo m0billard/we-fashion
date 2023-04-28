@@ -11,56 +11,15 @@
 </head>
 
 <body id="top">
-    @include("header")
+    @include('header')
     <main>
         <div class="flex justify-end max-w-5xl mx-auto my-7">
             <p class="font-normal text-xl">4 résultats</p>
         </div>
         <section class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-8">
             @foreach ($products as $product)
-                <div class="max-w-xs rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="img/femmes/wxl-_New_Coleen-006.jpg" alt="">
-                    <div class="px-6 py-4">
-                        <div class="flex items-center justify-between">
-                            <div class="font-bold text-xl mb-2">{{ $product->name }}</div>
-                            <p class="text-gray-700 text-base">
-                                {{ $product->price }}€
-                            </p>
-                        </div>
-                        <p class="text-gray-600 text-base">
-                            {{ $product->description }}
-                        </p>
-                    </div>
-                </div>
-                <div class="max-w-xs rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="img/femmes/wxl-_New_Coleen-006.jpg" alt="">
-                    <div class="px-6 py-4">
-                        <div class="flex items-center justify-between">
-                            <div class="font-bold text-xl mb-2">{{ $product->name }}</div>
-                            <p class="text-gray-700 text-base">
-                                {{ $product->price }}€
-                            </p>
-                        </div>
-                        <p class="text-gray-600 text-base">
-                            {{ $product->description }}
-                        </p>
-                    </div>
-                </div>
-                <div class="max-w-xs rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="img/femmes/wxl-_New_Coleen-006.jpg" alt="">
-                    <div class="px-6 py-4">
-                        <div class="flex items-center justify-between">
-                            <div class="font-bold text-xl mb-2">{{ $product->name }}</div>
-                            <p class="text-gray-700 text-base">
-                                {{ $product->price }}€
-                            </p>
-                        </div>
-                        <p class="text-gray-600 text-base">
-                            {{ $product->description }}
-                        </p>
-                    </div>
-                </div>
-                <div class="max-w-xs rounded overflow-hidden shadow-lg">
+                <div onClick="window.location.href='{{ route('products.show', '$product->id') }}'"
+                    class="max-w-xs rounded overflow-hidden shadow-lg">
                     <img class="w-full" src="img/femmes/wxl-_New_Coleen-006.jpg" alt="">
                     <div class="px-6 py-4">
                         <div class="flex items-center justify-between">
@@ -77,7 +36,7 @@
             @endforeach
         </section>
     </main>
-    @include("footer")
+    @include('footer')
     <script>
         const toggleMenuBtn = document.querySelector("#menu-btn");
         const toggleMenuImg = document.querySelector("#menu-btn img");
