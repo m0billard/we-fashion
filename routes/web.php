@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'App\Http\Controllers\ProductsController@index');
+Route::get('/products/{id}', 'App\Http\Controllers\ProductsController@show')->name('products.show');
