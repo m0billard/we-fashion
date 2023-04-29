@@ -12,24 +12,21 @@
 
 <body id="top">
     @include('header')
-    <main>
-        <div class="flex justify-end max-w-5xl mx-auto my-7">
-            <p class="font-normal text-xl">4 résultats</p>
+    <main class="sm:mt-32 mt-28">
+        <div class="flex justify-center max-w-5xl mx-auto mb-6">
+            <p class="text-base font-semibold uppercase">{{ $products->count() }} articles trouvés</p>
         </div>
-        <section class="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-8">
+        <section class="max-w-5xl mx-auto flex items-center justify-center flex-wrap gap-8">
             @foreach ($products as $product)
-                <div onClick="window.location.href='{{ route('products.show', '$product->id') }}'"
-                    class="max-w-xs rounded overflow-hidden shadow-lg">
+                <div onClick="window.location.href='{{ route('products.show', $product->id) }}'"
+                    class="max-w-xs rounded overflow-hidden shadow cursor-pointer hover:blur-[1.5px]">
                     <img class="w-full" src="img/femmes/wxl-_New_Coleen-006.jpg" alt="">
                     <div class="px-6 py-4">
                         <div class="flex items-center justify-between">
                             <div class="font-bold text-xl mb-2">{{ $product->name }}</div>
-                            <p class="text-gray-700 text-base">
-                                {{ $product->price }}€
-                            </p>
                         </div>
                         <p class="text-gray-600 text-base">
-                            {{ $product->description }}
+                            {{ $product->price }}€
                         </p>
                     </div>
                 </div>
