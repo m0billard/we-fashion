@@ -2,7 +2,6 @@
 
 ## Installation
 
-> _Décrire ici les étapes d'installation et commandes à lancer (migrations, seeds, vendors laravel et dépendances npm)_
 cd we-fashion
 npm install
 php artisan migrate

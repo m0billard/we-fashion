@@ -136,6 +136,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $products->links() }}
         </div>
     </main>
     @include('footer')

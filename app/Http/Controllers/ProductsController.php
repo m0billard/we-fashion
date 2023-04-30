@@ -9,7 +9,7 @@ class ProductsController extends Controller
 {
     public function index() // Récupère la liste de tous les produits puis l'envoie
     {
-        $products = Products::all();
+        $products = Products::simplePaginate(6);
         return view('welcome', ['products' => $products]);
     }
 
@@ -21,7 +21,7 @@ class ProductsController extends Controller
 
     public function admin() // Affiche la page admin de gestion des produits
     {
-        $products = Products::all();
+        $products = Products::simplePaginate(15);
         return view('admin', ['products' => $products]);
     }
 

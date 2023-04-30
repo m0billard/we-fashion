@@ -14,7 +14,11 @@
     @include('header')
     <main class="sm:mt-32 mt-28">
         <div class="flex justify-center max-w-5xl mx-auto mb-6">
-            <p class="text-base font-semibold uppercase">{{ $products->count() }} articles trouvés</p>
+            @if ($products->count() > 1)
+                <p class="text-base font-semibold uppercase">{{ $products->count() }} articles trouvés</p>
+            @else
+                <p class="text-base font-semibold uppercase">{{ $products->count() }} article trouvé</p>
+            @endif
         </div>
         <section class="max-w-5xl mx-auto flex items-center justify-center flex-wrap gap-8">
             @foreach ($products as $product)
@@ -31,6 +35,7 @@
                     </div>
                 </div>
             @endforeach
+            {{ $products->links() }}
         </section>
     </main>
     @include('footer')
