@@ -9,3 +9,4 @@ Route::get('/admin/{id}/edit', 'App\Http\Controllers\ProductsController@edit')->
 Route::put('/products/{id}', 'App\Http\Controllers\ProductsController@update')->name('products.update');
 Route::get('/admin/edit', 'App\Http\Controllers\ProductsController@create')->name('products.create');
 Route::post('/products', 'App\Http\Controllers\ProductsController@store')->name('products.store');
+Route::delete('/products/{id}', 'App\Http\Controllers\ProductsController@destroy')->name('products.destroy');
