@@ -19,8 +19,6 @@ return new class extends Migration
             $table->boolean('visible');
             $table->boolean('state');
             $table->string('reference');
-            // $table->integer('category_id')->unsigned();
-            // $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

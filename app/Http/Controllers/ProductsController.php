@@ -36,7 +36,7 @@ class ProductsController extends Controller
         return view('edit');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) // Fonction de mise à jour de la BDD à chaque edit de produits
     {
         $products = Products::findOrFail($id);
         $products->name = $request->input('name');
@@ -44,6 +44,7 @@ class ProductsController extends Controller
         $products->price = $request->input('price');
         $products->visible = $request->input('visible');
         $products->state = $request->input('state');
+        $products->reference = $request->input('reference');
         $products->save();
         return redirect()->route('products.admin');
     }
@@ -69,7 +70,13 @@ class ProductsController extends Controller
         return redirect()->route('products.admin');
     }
 
-    public function destroy(int $id)
+    public function filterByState($state) // Fonction pour tirer les articles soldés des articles non soldés sur la page d'accueil
+    {
+        $products = Products::where('state', $state)->get();
+        return view('state', ['products' => $products]);
+    }
+
+    public function destroy(int $id) // Fonction pour supprimer un produit sur la page admin
     {
         $product = Products::findOrFail($id);
         $product->delete();
